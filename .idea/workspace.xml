@@ -5,34 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd9a6f70-4fc2-4518-b2f6-7328603ae964" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/client/CardsFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/client/LoansFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/ConsolidatedCustomerDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/CardsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/ConsolidatedCustomerDetailsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/LoansDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/service/client/IConsolidatedService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/service/client/IConsolidatedServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/common-config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/AccountsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/AccountsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/AccountsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/ResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/ResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/mapper/CustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/mapper/CustomerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/model/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/service/IAccountsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/service/IAccountsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/service/Impl/AccountsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/service/Impl/AccountsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cards/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Cards/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cards/src/main/java/com/tomcat/Cards/controller/CardsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cards/src/main/java/com/tomcat/Cards/controller/CardsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cards/src/main/java/com/tomcat/Cards/service/iCardsServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cards/src/main/java/com/tomcat/Cards/service/iCardsServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cards/src/main/java/com/tomcat/Cards/service/impl/iCardsServicesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cards/src/main/java/com/tomcat/Cards/service/impl/iCardsServicesImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cards/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Cards/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Loans/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Loans/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Loans/src/main/java/com/tomcat/Loans/controller/LoansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Loans/src/main/java/com/tomcat/Loans/controller/LoansController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Loans/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Loans/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +22,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Accounts" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -73,22 +47,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AccountsApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CardsApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ConfigserverApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EurekaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LoansApplication.executor&quot;: &quot;Run&quot;,
-    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/EazyBank/section8&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AccountsApplication.executor": "Run",
+    "Application.CardsApplication.executor": "Run",
+    "Application.ConfigserverApplication.executor": "Run",
+    "Application.EurekaApplication.executor": "Run",
+    "Application.LoansApplication.executor": "Run",
+    "OverrideImplement.generate.javadoc": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/EazyBanking",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\microservices\section7\v2-springboot- RefreshMonitorPractice - dockerize\docker-compose\support" />
@@ -206,6 +180,7 @@
     <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.integration:spring-integration-core" />
     <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="docker-compose.yml" />
     <option featureType="dependencySupport" implementationName="executable:kubectl" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />

@@ -128,6 +128,18 @@ services:
     container_name: accounts-ms
     ports:
       - "8081:8081"
+
+    #     ports:
+    #       - "8081"
+
+    #    dynamic host ports
+    #    ports:
+    #      - "2001-2004:8081"
+    #    deploy:
+    #      replicas: 3   # scale to 3 containers
+    #      restart_policy:
+    #        condition: on-failure
+
     environment:
       SPRING_APPLICATION_NAME: accounts
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/

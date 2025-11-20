@@ -1,0 +1,14 @@
+
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+accounts:
+  message: "thank you for contacting accounts microservices production team"
+  contactDetails:
+    developer: "asim ahmed - product engineer"
+    email: "asimahmed@gmail.com"
+  onCallSupport:
+    - 9543211234
+    - 9123456789

@@ -1,0 +1,17 @@
+
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "v1.2"
+
+cards:
+  message: "thank you for contacting cards microservices quality analysis team"
+  contactDetails:
+    developer: "mayank kumar singh - quality engineer"
+    email: "mayankkumar@gmail.com"
+  onCallSupport:
+    - 9543211234
+    - 9123456789

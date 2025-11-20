@@ -1,0 +1,36 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/microservices"
+    username: "root"
+    password: "root"
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  config:
+    import:
+      - "accounts-qa.yml"
+      - "accounts-prod.yml"
+      - "accounts-support.yml"
+  profiles:
+    active:
+      - "support"
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "thank you for contacting accounts microservices development team [primary]"
+  contactDetails:
+    developer: "prateek arya"
+    email: "prateekarya100@gmail.com"
+  onCallSupport:
+    - 9650841442
+    - 9123456789

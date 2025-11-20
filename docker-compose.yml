@@ -1,0 +1,64 @@
+services:
+
+  rabbit:
+    image: rabbitmq:3.13-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
+  configserver:
+    image: "prateekarya100/configserver:ms"
+    container_name: configserver-ms
+    ports:
+      - "8071:8071"
+    environment:
+      SPRING_CLOUD_CONFIG_SERVER_GIT_URI: "https://github.com/prateekarya100/configserver.git"
+      SPRING_RABBITMQ_HOST: "rabbit"
+      SPRING_RABBITMQ_PORT: "5672"
+      SPRING_RABBITMQ_USERNAME: "guest"
+      SPRING_RABBITMQ_PASSWORD: "guest"
+      SPRING_PROFILES_ACTIVE: "git"
+      SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT_LABEL: "main"
+    depends_on:
+      rabbit:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent http://configserver-ms:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
+  cards:
+    image: "prateekarya100/cards:ms"
+    container_name: cards-ms
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_APPLICATION_NAME: "cards"
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+    depends_on:
+      configserver:
+        condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+
+networks:
+  eazybank:
+    driver: "bridge"

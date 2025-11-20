@@ -1,0 +1,45 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/microservices"
+    username: "root"
+    password: "root"
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  config:
+    import:
+      - "cards-prod.yml"
+      - "cards-qa.yml"
+      - "cards-support.yml"
+
+  profiles:
+    active:
+#      - "cards_prod"
+#      - "cards_qa"
+      - "support"
+
+
+# HIGHEST PRIORITY AS PER ENVIRONMENT CHANGES
+#  1> --spring.profiles.active=cards_support [ CLI arguments ]
+#  2> -Dspring.profiles.active=cards_support [ VM arguments ]
+#  3> SPRING_PROFILES_ACTIVE=cards_support [ environment variable ]
+
+build:
+  version: "v1.0"
+
+cards:
+  message: "thank you for contacting cards microservices development team"
+  contactDetails:
+    developer: "prateek arya"
+    email: "prateekarya100@gmail.com"
+  onCallSupport:
+    - 9650841442
+    - 9123456789

@@ -1,34 +1,26 @@
 server:
   port: 8081
 
-
 spring:
   application:
-    name: "accounts"
+    name: accounts
   profiles:
-    active:
-      - "prod"
+    active: prod
   config:
-    import:
-      - "optional:configserver:http://localhost:8071"
+    import: optional:configserver:http://localhost:8071
+
   datasource:
-#    url: jdbc:h2:mem:testdb
-#    username: sa
-#    password: ''
-#    driverClassName: org.h2.Driver
-#      url: "jdbc:mysql://localhost:3307/accountsdb"
-      url: "jdbc:mysql://localhost:3306/microservices"
-      username: "root"
-      password: "root"
-      driver-class-name: "com.mysql.cj.jdbc.Driver"
-  
+    url: jdbc:mysql://localhost:3306/microservices
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
-#    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
+
   sql:
     init:
       mode: always
@@ -39,31 +31,25 @@ spring:
     username: guest
     password: guest
 
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: "${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}"
+
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-  endpoint:
-    shutdown:
-      enabled: true
-  info:
-    env:
-      enabled: true
-endpoints:
-  shutdown:
-    enabled: true
-
-eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
 
 info:
   app:
-    name: "accounts"
-    description: "eazybank accounts application"
-    version: "1.0.0"
+    name: accounts
+    description: eazybank accounts application
+    version: 1.0.0

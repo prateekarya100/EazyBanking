@@ -132,13 +132,13 @@ services:
 #     ports:
 #       - "8081"
 
-#    dynamic host portsports:
-    ##      - "2001-2004:8081"
-    ##    deploy:
-    ##      replicas: 3   # scale to 3 containers
-    ##      restart_policy:
-    ##        condition: on-failure
-#
+#    dynamic host ports
+#    ports:
+#      - "2001-2004:8081"
+#    deploy:
+#      replicas: 3   # scale to 3 containers
+#      restart_policy:
+#        condition: on-failure
 
     environment:
       SPRING_APPLICATION_NAME: accounts

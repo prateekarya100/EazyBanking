@@ -4,75 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd9a6f70-4fc2-4518-b2f6-7328603ae964" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="50cc21d0-3195-4b84-bb33-7be84d62b61f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../section8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../section8/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/docker-compose/default/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../section8/docker-compose/prod/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/docker-compose/prod/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../section8/docker-compose/qa/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/docker-compose/qa/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../section8/docker-compose/support/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/docker-compose/support/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../section8/eureka/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/eureka/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../section8/eureka/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/eureka/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;prateekarya100&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/prateekarya100/EazyBank.git&quot;,
-    &quot;accountId&quot;: &quot;ec179450-90d9-49ed-8b3f-51e720b94c72&quot;
-  }
-}</component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2sLWUG7J2Jajqq9p6OcFMgMcTip" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="368gKSSoVCfKx5XlbV1JsSYOPcp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AccountsApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CardsApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ConfigserverApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EurekaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LoansApplication.executor&quot;: &quot;Run&quot;,
-    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/EazyBanking&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AccountsApplication.executor": "Run",
+    "Application.CardsApplication.executor": "Run",
+    "Application.ConfigserverApplication.executor": "Run",
+    "Application.EurekaApplication.executor": "Run",
+    "Application.GatewayserverApplication.executor": "Run",
+    "Application.LoansApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/EazyBank/section9/gatewayserver",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\microservices\section7\v2-springboot- RefreshMonitorPractice - dockerize\docker-compose\support" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\microservices\section7\v2-springboot- RefreshMonitorPractice - dockerize" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.tomcatdevs.Accounts.dto" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -80,7 +56,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ConfigserverApplication">
+  <component name="RunManager" selected="Application.GatewayserverApplication">
     <configuration name="AccountsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.tomcatdevs.Accounts.AccountsApplication" />
       <module name="accounts" />
@@ -107,12 +83,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConfigserverApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tomcat.configserver.configserver.ConfigserverApplication" />
-      <module name="configserver" />
+    <configuration name="EurekaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tomcat.eureka.EurekaApplication" />
+      <module name="eureka" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.tomcat.configserver.configserver.*" />
+          <option name="PATTERN" value="com.tomcat.eureka.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -120,12 +96,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EurekaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tomcat.eureka.EurekaApplication" />
-      <module name="eureka" />
+    <configuration name="GatewayserverApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tomcat.gatewayserver.GatewayserverApplication" />
+      <module name="gatewayserver" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.tomcat.eureka.*" />
+          <option name="PATTERN" value="com.tomcat.gatewayserver.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,50 +122,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.AccountsApplication" />
-      <item itemvalue="Application.CardsApplication" />
-      <item itemvalue="Application.ConfigserverApplication" />
-      <item itemvalue="Application.EurekaApplication" />
-      <item itemvalue="Application.LoansApplication" />
-    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GatewayserverApplication" />
         <item itemvalue="Application.LoansApplication" />
         <item itemvalue="Application.CardsApplication" />
         <item itemvalue="Application.AccountsApplication" />
         <item itemvalue="Application.EurekaApplication" />
-        <item itemvalue="Application.ConfigserverApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cd9a6f70-4fc2-4518-b2f6-7328603ae964" name="Changes" comment="" />
-      <created>1738235348839</created>
+      <changelist id="50cc21d0-3195-4b84-bb33-7be84d62b61f" name="Changes" comment="" />
+      <created>1764393549558</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1738235348839</updated>
+      <updated>1764393549558</updated>
     </task>
     <servers />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.integration:spring-integration-core" />
-    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
-    <option featureType="com.intellij.fileTypeFactory" implementationName="docker-compose.yml" />
-    <option featureType="dependencySupport" implementationName="executable:kubectl" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
-    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
-    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-stream" />
-    <option featureType="dependencySupport" implementationName="executable:docker" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
   </component>
 </project>

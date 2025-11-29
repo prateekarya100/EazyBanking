@@ -1,5 +1,5 @@
-#server:
-#  port: 8761
+server:
+  port: 8761
 
 spring:
   application:
@@ -27,5 +27,7 @@ eureka:
   instance:
     hostname: localhost
   client:
-    register-with-eureka: false
     fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # hardcoded works best for dev

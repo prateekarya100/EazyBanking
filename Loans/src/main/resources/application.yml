@@ -54,13 +54,12 @@ endpoints:
 
 eureka:
   instance:
-    hostname: localhost
-    appname: ${spring.application.name}
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${server.port}
+    ip-address: 127.0.0.1
+    #    instance-id: ${spring.application.name}:${server.port}prefer-ip-address: true
   client:
-    register-with-eureka: true
     fetch-registry: true
+    register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
 

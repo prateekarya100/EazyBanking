@@ -19,7 +19,7 @@ spring:
       prefer-ip-address: true
       client:
         service-url:
-          defaultZone: http://localhost:8761/eureka/
+          defaultZone: http://eureka-ms:8761/eureka/
         register-with-eureka: true
         fetch-registry: true
 
@@ -33,7 +33,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-ms:8761/eureka/
 
 management:
   endpoints:

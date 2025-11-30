@@ -27,7 +27,7 @@ import javax.smartcardio.CardNotPresentException;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/cards",produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api",produces = MediaType.APPLICATION_JSON_VALUE)
 //@AllArgsConstructor
 @Tag(
         name = "Cards Microservices",

@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
         description = "EazyBank Loans Microservices Restful WebServices Documentation"
 )
 @RestController
-@RequestMapping(path = "/api/loans",produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api",produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 //@AllArgsConstructor
 @EnableConfigurationProperties(value = {ContactInfoLoansDevTeam.class})

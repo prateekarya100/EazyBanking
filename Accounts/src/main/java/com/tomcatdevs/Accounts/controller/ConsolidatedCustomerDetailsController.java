@@ -2,6 +2,7 @@ package com.tomcatdevs.Accounts.controller;
 
 import com.tomcatdevs.Accounts.dto.ConsolidatedCustomerDetailsDTO;
 import com.tomcatdevs.Accounts.dto.ErrorResponseDto;
+import com.tomcatdevs.Accounts.dto.ResponseDto;
 import com.tomcatdevs.Accounts.service.client.IConsolidatedService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,6 +11,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +28,8 @@ import java.util.Optional;
 @RequestMapping(path = "/api",produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 public class ConsolidatedCustomerDetailsController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ConsolidatedCustomerDetailsController.class);
 
     @Autowired
     private IConsolidatedService iConsolidatedService;
@@ -51,8 +56,10 @@ public class ConsolidatedCustomerDetailsController {
             }
     )
     @GetMapping(value = "consolidated/CustomerDetails")
-    public ResponseEntity<?> fetchConsolidatedCustomerInformation(@RequestParam
-                                                                                               @Pattern(regexp = "$|[0-9]{10}",message = "number must be of 10 digit") String mobileNumber){
+    public ResponseEntity<?> fetchConsolidatedCustomerInformation(
+            @RequestParam @Pattern(regexp = "$|[0-9]{10}",message = "number must be of 10 digit") String mobileNumber){
+
+
          Optional<ConsolidatedCustomerDetailsDTO> customerDetailsDTOOptional = iConsolidatedService.fetchConsolidatedInfo(mobileNumber);
          if(customerDetailsDTOOptional.isEmpty()){
              return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -62,4 +69,5 @@ public class ConsolidatedCustomerDetailsController {
                  .status(HttpStatus.OK)
                  .body(customerDetailsDTOOptional);
     }
+
 }

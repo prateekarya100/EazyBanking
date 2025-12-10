@@ -4,6 +4,7 @@ import com.tomcat.Cards.dto.CardsDto;
 import com.tomcat.Cards.model.Cards;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import javax.smartcardio.CardNotPresentException;
 import java.util.List;

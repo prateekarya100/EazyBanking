@@ -9,7 +9,11 @@ import com.tomcat.Cards.model.Cards;
 import com.tomcat.Cards.repository.CardsRepository;
 import com.tomcat.Cards.service.iCardsServices;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +22,10 @@ import java.util.Random;
 @Service
 @AllArgsConstructor
 public class iCardsServicesImpl implements iCardsServices {
+
+
+    private static final Logger logger = LoggerFactory.getLogger(iCardsServicesImpl.class);
+
 
     private CardsRepository cardsRepository;
 
@@ -44,22 +52,18 @@ public class iCardsServicesImpl implements iCardsServices {
         return cardsRepository.findAll();
     }
 
-    /**
-     * @param mobileNumber
-     * @return
-     */
+
     @Override
     public CardsDto fetchCardDetailsByCardNumber(String cardNumber) {
+
         Cards cards = cardsRepository.findByCardNumber(cardNumber).orElseThrow(
                 ()->new ResourceNotFoundException("card","card number",cardNumber)
         );
+
        return CardsMapper.mapToDto(cards,new CardsDto());
     }
 
-    /**
-     * @param mobileNumber
-     * @return
-     */
+
     @Override
     public boolean cardDetailsUpdation(CardsDto cardsDto) {
         Optional<Cards> cards = Optional.ofNullable(cardsRepository.findByCardNumber(cardsDto.getCardNumber()))
@@ -85,7 +89,6 @@ public class iCardsServicesImpl implements iCardsServices {
     }
 
     /**
-     * @param card
      * @return
      */
     @Override

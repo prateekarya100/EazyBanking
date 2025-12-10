@@ -9,7 +9,10 @@ import com.tomcat.Loans.model.Loans;
 import com.tomcat.Loans.repository.LoansRepository;
 import com.tomcat.Loans.service.ILoansService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.Optional;
 import java.util.Random;
@@ -17,6 +20,8 @@ import java.util.Random;
 @Service
 @AllArgsConstructor
 public class ILoansServiceImpl implements ILoansService {
+
+    private static final Logger logger = LoggerFactory.getLogger(ILoansServiceImpl.class);
 
     private LoansRepository loansRepository;
 
@@ -30,7 +35,7 @@ public class ILoansServiceImpl implements ILoansService {
             loansRepository.save(createNewLoanAccount(mobileNumber));
             loanCreated = true;
         }
-        return loanCreated;
+        return loanCreated; 
     }
 
     private Loans createNewLoanAccount(String mobileNumber) {

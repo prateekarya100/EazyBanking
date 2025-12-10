@@ -19,4 +19,5 @@ public interface AccountsRepository extends JpaRepository<Accounts, Long> {
         // used when we modify / delete / update into database resources
     void deleteByCustomerId(Long customerId);
 
+
 }

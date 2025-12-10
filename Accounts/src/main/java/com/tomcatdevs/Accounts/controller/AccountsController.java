@@ -1,6 +1,7 @@
 package com.tomcatdevs.Accounts.controller;
 
 import com.tomcatdevs.Accounts.dto.*;
+import com.tomcatdevs.Accounts.exception.ResourceNotFoundException;
 import com.tomcatdevs.Accounts.model.Accounts;
 import com.tomcatdevs.Accounts.service.IAccountsService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,7 +12,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
+//import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
@@ -20,8 +23,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
-
 
 @RestController
 @RequestMapping(path = "/api",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -183,5 +186,50 @@ public class AccountsController {
     public List<Accounts> getListOfAllAccounts(){
         return iAccountsService.findAllActiveAccounts();
     }
+
+
+    @Operation(
+            summary = "Freeze an account",
+            description = "Freeze a customer's account to prevent transactions"
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Account frozen successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid request"),
+            @ApiResponse(responseCode = "404", description = "Account not found")
+    })
+    @PostMapping("/freeze")
+    public ResponseEntity<AccountStatusResponse> freezeAccount(@Valid @RequestBody AccountStatusRequest request) {
+        return ResponseEntity.ok(iAccountsService.freezeAccount(request));
+    }
+
+    @Operation(
+            summary = "Unfreeze an account",
+            description = "Unfreeze a customer's account to allow transactions"
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Account unfrozen successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid request"),
+            @ApiResponse(responseCode = "404", description = "Account not found")
+    })
+    @PostMapping("/unfreeze")
+    public ResponseEntity<AccountStatusResponse> unfreezeAccount(@Valid @RequestBody AccountStatusRequest request) {
+        return ResponseEntity.ok(iAccountsService.unfreezeAccount(request));
+    }
+
+    @Operation(
+            summary = "Get account status",
+            description = "Get the current status of an account"
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Success"),
+            @ApiResponse(responseCode = "404", description = "Account not found")
+    })
+    @GetMapping("/status/{accountNumber}")
+    public ResponseEntity<AccountStatusResponse> getAccountStatus(
+            @PathVariable @Pattern(regexp = "\\d{10}", message = "Account number must be 10 digits")
+            String accountNumber) {
+        return ResponseEntity.ok(iAccountsService.getAccountStatus(accountNumber));
+    }
+
 
 }

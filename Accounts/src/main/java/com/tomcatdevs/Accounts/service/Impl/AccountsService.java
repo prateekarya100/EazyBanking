@@ -1,8 +1,12 @@
 package com.tomcatdevs.Accounts.service.Impl;
 
 import com.tomcatdevs.Accounts.constants.AccountsConstants;
+import com.tomcatdevs.Accounts.dto.AccountStatusRequest;
+import com.tomcatdevs.Accounts.dto.AccountStatusResponse;
 import com.tomcatdevs.Accounts.dto.AccountsDto;
 import com.tomcatdevs.Accounts.dto.CustomerDto;
+import com.tomcatdevs.Accounts.enums.AccountStatus;
+import com.tomcatdevs.Accounts.exception.AccountOperationException;
 import com.tomcatdevs.Accounts.exception.CustomerAlreadyExistsException;
 import com.tomcatdevs.Accounts.exception.ResourceNotFoundException;
 import com.tomcatdevs.Accounts.mapper.AccountsMapper;
@@ -12,13 +16,12 @@ import com.tomcatdevs.Accounts.model.Customer;
 import com.tomcatdevs.Accounts.repository.AccountsRepository;
 import com.tomcatdevs.Accounts.repository.CustomerRepository;
 import com.tomcatdevs.Accounts.service.IAccountsService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -26,6 +29,8 @@ public class AccountsService implements IAccountsService {
 
     private AccountsRepository accountsRepository;
     private CustomerRepository customerRepository;
+
+
 
     /**
      * @param customerDto
@@ -57,6 +62,8 @@ public class AccountsService implements IAccountsService {
         Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
                 ()->new ResourceNotFoundException("customer", "mobile number", mobileNumber)
         );
+
+        validateAccountNotFrozen(accounts);
         // accountsDto Nested inside CustomerDTO using MapperClasses
         CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer,new CustomerDto());
         customerDto.setAccountsDto(AccountsMapper.mapAccountsToDto(accounts,new AccountsDto()));
@@ -72,38 +79,44 @@ public class AccountsService implements IAccountsService {
         boolean isUpdated = false;
         AccountsDto accountsDto = customerDto.getAccountsDto();
         if (accountsDto!=null) {
-           Accounts accounts = accountsRepository.findByAccountNumber(accountsDto.getAccountNumber()).orElseThrow(
+            Accounts accounts = accountsRepository.findByAccountNumber(accountsDto.getAccountNumber()).orElseThrow(
                     ()->new ResourceNotFoundException("account","account number",accountsDto.getAccountNumber().toString())
-           );
-           Customer customer = customerRepository.findByCustomerId(accounts.getCustomerId()).orElseThrow(
-                   ()->new ResourceNotFoundException("customer", "mobile number", customerDto.getMobileNumber())
-           );
-           AccountsMapper.mapDtoToAccounts(accountsDto,accounts);
-           CustomerMapper.mapToCustomer(customerDto,customer);
+            );
 
-               customerRepository.save(customer);
-               accountsRepository.save(accounts);
-           isUpdated = true;
+            // Add status validation
+            validateAccountNotFrozen(accounts);
+
+            Customer customer = customerRepository.findByCustomerId(accounts.getCustomerId()).orElseThrow(
+                    ()->new ResourceNotFoundException("customer", "mobile number", customerDto.getMobileNumber())
+            );
+            AccountsMapper.mapDtoToAccounts(accountsDto,accounts);
+            CustomerMapper.mapToCustomer(customerDto,customer);
+
+            customerRepository.save(customer);
+            accountsRepository.save(accounts);
+            isUpdated = true;
         }
         return isUpdated;
     }
 
-    /**
-     * @param mobileNumber
-     * @return
-     */
     @Override
     public boolean deleteCustomerAccount(String mobileNumber) {
-//        boolean isDeleted = false;
         Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
                 ()->new ResourceNotFoundException("customer", "mobile number", mobileNumber)
         );
 
-        /* data jpa start calling delete query based on
-           deleteBy --> delete prefix
-           customerId-> unique id of the customer
-        */
-//        CUSTOM REPOSITORY METHOD CREATED FOR DELETE OPERATION
+        Accounts account = accountsRepository.findByCustomerId(customer.getCustomerId())
+                .orElseThrow(() -> new ResourceNotFoundException("account", "customer id",
+                        customer.getCustomerId().toString()));
+
+        // Prevent deletion of frozen accounts
+        if (account.getStatus() == AccountStatus.FROZEN) {
+            throw new AccountOperationException(
+                    "Cannot delete a frozen account. Please unfreeze the account before deletion. " +
+                            "Reason: " + account.getFreezeReason()
+            );
+        }
+
         accountsRepository.deleteByCustomerId(customer.getCustomerId());
         customerRepository.deleteById(customer.getCustomerId());
         return true;
@@ -117,6 +130,8 @@ public class AccountsService implements IAccountsService {
         return accountsRepository.findAll();
     }
 
+
+
     private Accounts createNewCustomerAccount(Customer customer) {
         Accounts newAccount = new Accounts();
         newAccount.setCustomerId(customer.getCustomerId());
@@ -128,4 +143,75 @@ public class AccountsService implements IAccountsService {
         newAccount.setCreatedBy(AccountsConstants.EXECUTIVE);
         return newAccount;
     }
+
+    // account freeze, unfreeze, get account status
+
+    @Transactional
+    @Override
+    public AccountStatusResponse freezeAccount(AccountStatusRequest request) {
+        Accounts account = accountsRepository.findByAccountNumber(Long.parseLong(request.getAccountNumber()))
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "account number", request.getAccountNumber()));
+
+        if (account.getStatus() == AccountStatus.FROZEN) {
+            return AccountStatusResponse.fromAccount(account, "Account is already frozen");
+        }
+
+        account.setStatus(AccountStatus.FROZEN);
+        account.setFreezeReason(request.getReason());
+        account.setFrozenAt(LocalDateTime.now());
+        account.setFrozenBy("SYSTEM"); // In real app, get from security context
+
+        accountsRepository.save(account);
+
+        // Publish event for notifications if you've implemented the event system
+        // publishAccountStatusChangedEvent(account, "Account frozen: " + request.getReason());
+
+        return AccountStatusResponse.fromAccount(account,
+                "Account has been frozen successfully. Reason: " + request.getReason());
+    }
+
+    @Transactional
+    @Override
+    public AccountStatusResponse unfreezeAccount(AccountStatusRequest request) {
+        Accounts account = accountsRepository.findByAccountNumber(Long.parseLong(request.getAccountNumber()))
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "account number", request.getAccountNumber()));
+
+        if (account.getStatus() != AccountStatus.FROZEN) {
+            return AccountStatusResponse.fromAccount(account, "Account is not frozen");
+        }
+
+        account.setStatus(AccountStatus.ACTIVE);
+        account.setFreezeReason(null);
+        account.setFrozenAt(null);
+        account.setFrozenBy(null);
+
+        accountsRepository.save(account);
+
+        // Publish event for notifications if you've implemented the event system
+        // publishAccountStatusChangedEvent(account, "Account unfrozen");
+
+        return AccountStatusResponse.fromAccount(account, "Account has been unfrozen successfully");
+    }
+
+    @Override
+    public AccountStatusResponse getAccountStatus(String accountNumber) {
+        Accounts account = accountsRepository.findByAccountNumber(Long.parseLong(accountNumber))
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "account number", accountNumber));
+
+        String message = account.getStatus() == AccountStatus.FROZEN ?
+                "Account is frozen. Reason: " + account.getFreezeReason() :
+                "Account is " + account.getStatus().name().toLowerCase();
+
+        return AccountStatusResponse.fromAccount(account, message);
+    }
+
+    private void validateAccountNotFrozen(Accounts account) {
+        if (account.getStatus() == AccountStatus.FROZEN) {
+            throw new AccountOperationException(
+                    "Account is frozen. Reason: " + account.getFreezeReason() +
+                            ". Please contact customer support for assistance."
+            );
+        }
+    }
+
 }

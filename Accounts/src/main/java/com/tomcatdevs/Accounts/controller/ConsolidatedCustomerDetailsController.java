@@ -69,5 +69,4 @@ public class ConsolidatedCustomerDetailsController {
                  .status(HttpStatus.OK)
                  .body(customerDetailsDTOOptional);
     }
-
 }

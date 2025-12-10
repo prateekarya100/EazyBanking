@@ -33,4 +33,5 @@ public class AccountsDto {
             description = "hold bank address of customer",example = "candor techspace 135 sector-135 noida"
     )
     private String branchAddress;
+
 }

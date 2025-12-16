@@ -152,9 +152,7 @@ public class AccountsService implements IAccountsService {
         Accounts account = accountsRepository.findByAccountNumber(Long.parseLong(request.getAccountNumber()))
                 .orElseThrow(() -> new ResourceNotFoundException("Account", "account number", request.getAccountNumber()));
 
-        if (account.getStatus() == AccountStatus.FROZEN) {
-            return AccountStatusResponse.fromAccount(account, "Account is already frozen");
-        }
+        validateAccountNotFrozen(account);
 
         account.setStatus(AccountStatus.FROZEN);
         account.setFreezeReason(request.getReason());
@@ -166,8 +164,7 @@ public class AccountsService implements IAccountsService {
         // Publish event for notifications if you've implemented the event system
         // publishAccountStatusChangedEvent(account, "Account frozen: " + request.getReason());
 
-        return AccountStatusResponse.fromAccount(account,
-                "Account has been frozen successfully. Reason: " + request.getReason());
+        return new AccountStatusResponse(account.getAccountNumber().toString(), account.getStatus().name(), request.getReason(), LocalDateTime.now());
     }
 
     @Transactional
@@ -176,21 +173,21 @@ public class AccountsService implements IAccountsService {
         Accounts account = accountsRepository.findByAccountNumber(Long.parseLong(request.getAccountNumber()))
                 .orElseThrow(() -> new ResourceNotFoundException("Account", "account number", request.getAccountNumber()));
 
-        if (account.getStatus() != AccountStatus.FROZEN) {
-            return AccountStatusResponse.fromAccount(account, "Account is not frozen");
+//        validateAccountNotFrozen(account);
+//        account.setStatus(AccountStatus.ACTIVE);
+
+        if (account.getStatus() == AccountStatus.FROZEN){
+            account.setStatus(AccountStatus.ACTIVE);
+            account.setFreezeReason(null);
+            account.setFrozenAt(null);
+            account.setFrozenBy(null);
         }
-
-        account.setStatus(AccountStatus.ACTIVE);
-        account.setFreezeReason(null);
-        account.setFrozenAt(null);
-        account.setFrozenBy(null);
-
         accountsRepository.save(account);
 
         // Publish event for notifications if you've implemented the event system
         // publishAccountStatusChangedEvent(account, "Account unfrozen");
 
-        return AccountStatusResponse.fromAccount(account, "Account has been unfrozen successfully");
+       return new AccountStatusResponse(account.getAccountNumber().toString(), account.getStatus().name(), request.getReason(), LocalDateTime.now());
     }
 
     @Override
@@ -202,7 +199,7 @@ public class AccountsService implements IAccountsService {
                 "Account is frozen. Reason: " + account.getFreezeReason() :
                 "Account is " + account.getStatus().name().toLowerCase();
 
-        return AccountStatusResponse.fromAccount(account, message);
+        return new AccountStatusResponse(account.getAccountNumber().toString(), account.getStatus().name(), message, LocalDateTime.now());
     }
 
     private void validateAccountNotFrozen(Accounts account) {

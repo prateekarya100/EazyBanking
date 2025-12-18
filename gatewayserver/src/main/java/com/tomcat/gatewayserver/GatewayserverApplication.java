@@ -25,6 +25,10 @@ public class GatewayserverApplication {
 								.addResponseHeader("X-ResponseTime", LocalDateTime.now().toString())
 								.addRequestHeader("X-Gateway", "EazyBank-GW")
 								.addRequestParameter("source", "gateway")
+								.circuitBreaker(c -> c
+										.setName("accountsCircuitBreaker")
+										.setFallbackUri("forward:/contact-support")
+								)
 //								.prefixPath("/api")  // adds /api before forwarding
 						)
 						.uri("lb://ACCOUNTS")

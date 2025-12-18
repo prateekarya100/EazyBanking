@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50cc21d0-3195-4b84-bb33-7be84d62b61f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/FormSubmitController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/AccountStatusRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/AccountStatusResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/entity/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/enums/AccountStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/exception/AccountOperationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-progress.md" afterDir="false" />
+    <list default="true" id="e0985dcf-bfc0-4ee1-89df-d296aec0ed43" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/tomcat/gatewayserver/controller/FallBackController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/tomcat/gatewayserver/dto/ResponseContactSupportTeam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/FormSubmitController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/AccountStatusRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/AccountStatusResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/entity/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/enums/AccountStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/exception/AccountOperationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../section9-featured/project-progress.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../section9/gatewayserver/src/main/java/com/tomcat/gatewayserver/filter/FilterUtility.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../section9/gatewayserver/src/main/java/com/tomcat/gatewayserver/filter/RequestTraceFilter.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../section9/gatewayserver/src/main/java/com/tomcat/gatewayserver/filter/ResponseTraceFilter.java" afterDir="false" />
@@ -31,9 +33,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
-        <option value="Interface" />
-        <option value="Exception" />
         <option value="Class" />
       </list>
     </option>
@@ -42,10 +41,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 7
+  &quot;associatedIndex&quot;: 2
 }</component>
-  <component name="ProjectId" id="368gKSSoVCfKx5XlbV1JsSYOPcp" />
+  <component name="ProjectId" id="36vPyI5k73UJJ3DQlRb4X7cbqJL" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -55,7 +53,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.AccountsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AccountsApplication.executor&quot;: &quot;Debug&quot;,
     &quot;Application.CardsApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.ConfigserverApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.EurekaApplication.executor&quot;: &quot;Run&quot;,
@@ -63,15 +61,9 @@
     &quot;Application.LoansApplication.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;dev.sweep.assistant.data.RecentlyUsedFiles&quot;: &quot;Accounts\\src\\main\\java\\com\\tomcatdevs\\Accounts\\controller\\ConsolidatedCustomerDetailsController.java&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/EazyBank/section9-featured&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.codeium.AppSettingsConfigurable&quot;,
-    &quot;sweep.chatMode&quot;: &quot;Agent&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/EazyBank/section10&quot;
   }
 }</component>
   <component name="RunDashboard">
@@ -108,6 +100,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ConfigserverApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tomcat.configserver.configserver.ConfigserverApplication" />
+      <module name="configserver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tomcat.configserver.configserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EurekaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.tomcat.eureka.EurekaApplication" />
       <module name="eureka" />
@@ -134,44 +139,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoansApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tomcat.Loans.LoansApplication" />
-      <module name="loans" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tomcat.Loans.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.CardsApplication" />
-      <item itemvalue="Application.AccountsApplication" />
-      <item itemvalue="Application.EurekaApplication" />
-      <item itemvalue="Application.GatewayserverApplication" />
-      <item itemvalue="Application.LoansApplication" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GatewayserverApplication" />
         <item itemvalue="Application.AccountsApplication" />
-        <item itemvalue="Application.CardsApplication" />
-        <item itemvalue="Application.LoansApplication" />
+        <item itemvalue="Application.ConfigserverApplication" />
         <item itemvalue="Application.EurekaApplication" />
+        <item itemvalue="Application.CardsApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="50cc21d0-3195-4b84-bb33-7be84d62b61f" name="Changes" comment="" />
-      <created>1764393549558</created>
+      <changelist id="e0985dcf-bfc0-4ee1-89df-d296aec0ed43" name="Changes" comment="" />
+      <created>1765884324334</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1764393549558</updated>
+      <updated>1765884324334</updated>
     </task>
     <servers />
   </component>

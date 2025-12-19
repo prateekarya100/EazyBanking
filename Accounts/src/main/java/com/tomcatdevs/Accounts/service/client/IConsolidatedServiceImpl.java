@@ -57,8 +57,14 @@ public class IConsolidatedServiceImpl implements IConsolidatedService{
         // get information from cards and loans microservices
        ResponseEntity<CardsDto> cardsDtoResponseEntity = cardsFeignClient.fetchCardByMobileNumber(mobileNumber);
        ResponseEntity<LoansDto> loansDtoResponseEntity = loansFeignClient.fetchLoans(mobileNumber);
-       customerDetailsDTO.setCardsDto(cardsDtoResponseEntity.getBody());
-       customerDetailsDTO.setLoansDto(loansDtoResponseEntity.getBody());
+
+       // check if the response is not null
+        if(null != cardsDtoResponseEntity){
+            customerDetailsDTO.setCardsDto(cardsDtoResponseEntity.getBody());
+        }
+        if(null != loansDtoResponseEntity){
+            customerDetailsDTO.setLoansDto(loansDtoResponseEntity.getBody());
+        }
        return Optional.of(customerDetailsDTO);
     }
 }

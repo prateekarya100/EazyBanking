@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "loans")
+@FeignClient(name = "loans",fallback = LoansFallBack.class)
 public interface LoansFeignClient {
 
     /** note--> fetching loan detail by passing mobile number **/

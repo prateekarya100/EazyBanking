@@ -14,6 +14,9 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true   # REQUIRED for lowercase service names
+      httpclient: # httpclient timeout configuration, global for all microservices routes
+        connect-timeout: 1000
+        response-timeout: 2s
 
     discovery:
       prefer-ip-address: true
@@ -22,6 +25,7 @@ spring:
           defaultZone: http://eureka-ms:8761/eureka/
         register-with-eureka: true
         fetch-registry: true
+
 
 eureka:
   instance:

@@ -14,6 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -34,6 +36,7 @@ import org.springframework.web.bind.annotation.*;
 @EnableConfigurationProperties(value = {ContactInfoLoansDevTeam.class})
 public class LoansController {
 
+    private static final Logger log = LogManager.getLogger(LoansController.class);
     private final ILoansService loansService;
 
     @Autowired
@@ -184,7 +187,9 @@ public class LoansController {
     }
 
     @GetMapping(value = "/contact-info")
-    public ResponseEntity<ContactInfoLoansDevTeam> contactCardDevTeam(){
+    public ResponseEntity<ContactInfoLoansDevTeam> contactLoanDevTeam(){
+        log.info("CONTACT_INFO OF LOANS");
+//        throw new RuntimeException("Something went wrong while fetching contact info of loans");
         return ResponseEntity.status(HttpStatus.OK)
                 .body(contactDevTeamInfo);
     }

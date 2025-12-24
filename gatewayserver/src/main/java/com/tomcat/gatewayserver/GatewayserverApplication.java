@@ -6,6 +6,7 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
@@ -46,9 +47,10 @@ public class GatewayserverApplication {
 						.path("/eazybank/loans/**")
 						.filters(f -> f
 								.rewritePath("/eazybank/loans/(?<segment>.*)", "/${segment}")
-//								.circuitBreaker(c -> c
-//										.setName("loanCircuitBreaker")
-//										.setFallbackUri("forward:/loanFallback"))
+								.circuitBreaker(c -> c
+										.setName("loanCircuitBreaker")
+										).retry(retryConfig -> retryConfig.setRetries(3)
+										.setBackoff(Duration.ofMillis(100),Duration.ofMillis(1000),2,true))
 						)
 						.uri("lb://LOANS")
 				)

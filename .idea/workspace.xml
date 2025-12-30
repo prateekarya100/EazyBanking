@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0985dcf-bfc0-4ee1-89df-d296aec0ed43" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/client/CardsFallBack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/client/LoansFallBack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/tomcat/gatewayserver/controller/FallBackController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/tomcat/gatewayserver/dto/ResponseContactSupportTeam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/FormSubmitController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/AccountStatusRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/dto/AccountStatusResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/entity/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/enums/AccountStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9-featured/Accounts/src/main/java/com/tomcatdevs/Accounts/exception/AccountOperationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9-featured/project-progress.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9/gatewayserver/src/main/java/com/tomcat/gatewayserver/filter/FilterUtility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9/gatewayserver/src/main/java/com/tomcat/gatewayserver/filter/RequestTraceFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../section9/gatewayserver/src/main/java/com/tomcat/gatewayserver/filter/ResponseTraceFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section8/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/docker-compose/default/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section8/docker-compose/prod/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/docker-compose/prod/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section8/docker-compose/qa/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/docker-compose/qa/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section8/docker-compose/support/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/docker-compose/support/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section8/eureka/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/eureka/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section8/eureka/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../section8/eureka/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Loans/src/main/java/com/tomcat/Loans/controller/LoansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Loans/src/main/java/com/tomcat/Loans/controller/LoansController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +22,20 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "prateekarya100"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/prateekarya100/EazyBanking.git",
+    "accountId": "d07b7dd0-229e-4bd9-ae36-0a719f6ddc67"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -57,10 +51,10 @@
   "keyToString": {
     "Application.AccountsApplication.executor": "Run",
     "Application.CardsApplication.executor": "Run",
-    "Application.ConfigserverApplication.executor": "Run",
-    "Application.EurekaApplication.executor": "Run",
-    "Application.GatewayserverApplication.executor": "Run",
-    "Application.LoansApplication.executor": "Run",
+    "Application.ConfigserverApplication.executor": "Debug",
+    "Application.EurekaApplication.executor": "Debug",
+    "Application.GatewayserverApplication.executor": "Debug",
+    "Application.LoansApplication.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -74,14 +68,25 @@
         <option value="Application" />
       </set>
     </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="Application">
+          <value>
+            <map>
+              <entry key="LoansApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="RunManager" selected="Application.LoansApplication">
-    <configuration name="AccountsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tomcatdevs.Accounts.AccountsApplication" />
-      <module name="accounts" />
+  <component name="RunManager" selected="Application.GatewayserverApplication">
+    <configuration name="CardsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tomcat.Cards.CardsApplication" />
+      <module name="cards" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.tomcatdevs.Accounts.*" />
+          <option name="PATTERN" value="com.tomcat.Cards.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -89,12 +94,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CardsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tomcat.Cards.CardsApplication" />
-      <module name="cards" />
+    <configuration name="ConfigserverApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tomcat.configserver.configserver.ConfigserverApplication" />
+      <module name="configserver" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.tomcat.Cards.*" />
+          <option name="PATTERN" value="com.tomcat.configserver.configserver.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CardsApplication" />
         <item itemvalue="Application.LoansApplication" />
-        <item itemvalue="Application.AccountsApplication" />
         <item itemvalue="Application.GatewayserverApplication" />
         <item itemvalue="Application.EurekaApplication" />
+        <item itemvalue="Application.ConfigserverApplication" />
+        <item itemvalue="Application.CardsApplication" />
       </list>
     </recent_temporary>
   </component>

@@ -25,6 +25,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Tag(
         name = "EazyBank Loans Service",
         description = "EazyBank Loans Microservices Restful WebServices Documentation"
@@ -186,9 +188,12 @@ public class LoansController {
         }
     }
 
+    private final AtomicInteger attemptCounter = new AtomicInteger(-1);
+
     @GetMapping(value = "/contact-info")
     public ResponseEntity<ContactInfoLoansDevTeam> contactLoanDevTeam(){
-        log.info("CONTACT_INFO OF LOANS");
+        int attempt = attemptCounter.incrementAndGet();
+        log.info("Attempt {} - Initiating request to contact Card Development Team 🚀", attempt);
 //        throw new RuntimeException("Something went wrong while fetching contact info of loans");
         return ResponseEntity.status(HttpStatus.OK)
                 .body(contactDevTeamInfo);

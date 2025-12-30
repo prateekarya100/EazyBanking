@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e0985dcf-bfc0-4ee1-89df-d296aec0ed43" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/tomcat/gatewayserver/GatewayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/tomcat/gatewayserver/GatewayserverApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,8 +147,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LoansApplication" />
         <item itemvalue="Application.GatewayserverApplication" />
+        <item itemvalue="Application.LoansApplication" />
         <item itemvalue="Application.EurekaApplication" />
         <item itemvalue="Application.ConfigserverApplication" />
         <item itemvalue="Application.CardsApplication" />

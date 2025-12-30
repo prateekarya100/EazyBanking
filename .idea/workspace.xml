@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e0985dcf-bfc0-4ee1-89df-d296aec0ed43" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/AccountsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/AccountsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/AccountsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/tomcat/gatewayserver/GatewayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/tomcat/gatewayserver/GatewayserverApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +51,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.AccountsApplication.executor": "Run",
+    "Application.AccountsApplication.executor": "Debug",
     "Application.CardsApplication.executor": "Run",
     "Application.ConfigserverApplication.executor": "Debug",
     "Application.EurekaApplication.executor": "Debug",
@@ -72,6 +75,10 @@
         <entry key="Application">
           <value>
             <map>
+              <entry key="AccountsApplication" value="STOPPED" />
+              <entry key="ConfigserverApplication" value="STOPPED" />
+              <entry key="EurekaApplication" value="STOPPED" />
+              <entry key="GatewayserverApplication" value="STOPPED" />
               <entry key="LoansApplication" value="STOPPED" />
             </map>
           </value>
@@ -80,12 +87,12 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.GatewayserverApplication">
-    <configuration name="CardsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tomcat.Cards.CardsApplication" />
-      <module name="cards" />
+    <configuration name="AccountsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tomcatdevs.Accounts.AccountsApplication" />
+      <module name="accounts" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.tomcat.Cards.*" />
+          <option name="PATTERN" value="com.tomcatdevs.Accounts.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -148,10 +155,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GatewayserverApplication" />
-        <item itemvalue="Application.LoansApplication" />
-        <item itemvalue="Application.EurekaApplication" />
+        <item itemvalue="Application.AccountsApplication" />
         <item itemvalue="Application.ConfigserverApplication" />
-        <item itemvalue="Application.CardsApplication" />
+        <item itemvalue="Application.EurekaApplication" />
+        <item itemvalue="Application.LoansApplication" />
       </list>
     </recent_temporary>
   </component>

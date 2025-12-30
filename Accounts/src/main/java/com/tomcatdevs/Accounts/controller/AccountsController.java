@@ -1,9 +1,9 @@
 package com.tomcatdevs.Accounts.controller;
 
 import com.tomcatdevs.Accounts.dto.*;
-import com.tomcatdevs.Accounts.exception.ResourceNotFoundException;
 import com.tomcatdevs.Accounts.model.Accounts;
 import com.tomcatdevs.Accounts.service.IAccountsService;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -12,23 +12,21 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
-import lombok.AllArgsConstructor;
-//import org.hibernate.annotations.Parameter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(path = "/api",produces = MediaType.APPLICATION_JSON_VALUE)
-@AllArgsConstructor
 @Validated
 @Tag(
         name = "EazyBank Accounts Service",
@@ -37,11 +35,24 @@ import java.util.List;
 @EnableConfigurationProperties(value = {ContactInfoAccountsDevTeam.class})
 public class AccountsController {
 
-//    @Autowired
-    private IAccountsService iAccountsService;
+    // create logger
+    private final Logger logger = Logger.getLogger(String.valueOf(AccountsController.class));
 
-    @Autowired
-    private ContactInfoAccountsDevTeam accountsDevTeam;
+//    @Autowired
+    private final IAccountsService iAccountsService;
+
+//    @Autowired
+    private final ContactInfoAccountsDevTeam accountsDevTeam;
+
+    private final String buildVersion;
+
+    public AccountsController(IAccountsService iAccountsService, ContactInfoAccountsDevTeam accountsDevTeam,
+                              @Value("${build.version:}") String buildVersion) {
+        this.iAccountsService = iAccountsService;
+        this.accountsDevTeam = accountsDevTeam;
+        this.buildVersion = buildVersion;
+    }
+
 
     @Operation(
             summary = "Create new bank account in eazybank",
@@ -230,6 +241,26 @@ public class AccountsController {
             String accountNumber) {
         return ResponseEntity.ok(iAccountsService.getAccountStatus(accountNumber));
     }
+
+    @Retry(name="getBuildVersion",fallbackMethod = "getBuildVersionFallback")
+    @GetMapping(value = "/version")
+    public ResponseEntity<String> getBuildVersion() throws TimeoutException {
+        logger.info("getBuildVersion() method Invoked");
+//        throw new NullPointerException();
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
+    }
+
+
+    public ResponseEntity<String> getBuildVersionFallback(Throwable throwable){
+        logger.info("getBuildVersionFallback() method Invoked");
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("FallBack Version ~ v5.0");
+    }
+
 
 
 }

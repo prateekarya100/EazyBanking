@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+/mvnw text eol=lf
+*.cmd text eol=crlf
+=======
+# Auto detect text files and perform LF normalization
+* text=auto
+*.jar filter=lfs diff=lfs merge=lfs -text
+>>>>>>> 2b8b7cc8ebd1348d132116feda0b5c8396b7535c

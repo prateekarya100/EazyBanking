@@ -1,0 +1,14 @@
+
+spring:
+  config:
+    activate:
+      on-profile: "support"
+
+accounts:
+  message: "thank you for contacting accounts microservices production support team"
+  contactDetails:
+    developer: "varnita makrariya - support engineer"
+    email: "varnitamakrari@gmail.com"
+  onCallSupport:
+    - 9543211234
+    - 9123456789

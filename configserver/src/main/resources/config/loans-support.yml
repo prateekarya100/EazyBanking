@@ -1,0 +1,17 @@
+
+spring:
+  config:
+    activate:
+      on-profile: "support"
+
+build:
+  version: "v3.3"
+
+loans:
+  message: "thank you for contacting loans microservices support and monitoring team"
+  contactDetails:
+    developer: "varnii mk- support engineer"
+    email: "varniimk@gmail.com"
+  onCallSupport:
+    - 9543211234
+    - 9123456789

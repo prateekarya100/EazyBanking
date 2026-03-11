@@ -1,0 +1,14 @@
+
+spring:
+  config:
+      activate:
+        on-profile: "qa"
+
+accounts:
+  message: "thank you for contacting accounts microservices quality assurance team"
+  contactDetails:
+    developer: "rohan mathur - quality analyst"
+    email: "rohanmathur@gmail.com"
+  onCallSupport:
+    - 9112233445
+    - 9123456789

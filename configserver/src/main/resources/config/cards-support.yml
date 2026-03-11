@@ -1,0 +1,17 @@
+
+spring:
+  config:
+    activate:
+      on-profile: "support"
+
+build:
+  version: "v1.3"
+
+cards:
+  message: "thank you for contacting cards microservices support and monitoring team"
+  contactDetails:
+    developer: "naveen pateria - support engineer"
+    email: "naveenpateria@gmail.com"
+  onCallSupport:
+    - 9543211234
+    - 9123456789

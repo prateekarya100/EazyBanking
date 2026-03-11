@@ -1,0 +1,17 @@
+
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "v3.2"
+
+loans:
+  message: "thank you for contacting loans microservices quality analysis team"
+  contactDetails:
+    developer: "vedant jha - quality engineer"
+    email: "vedantjha@gmail.com"
+  onCallSupport:
+    - 9543211234
+    - 9123456789

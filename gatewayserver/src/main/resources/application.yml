@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: "gatewayserver"
+
+  config:
+    import:
+      - "optional:configserver:http://localhost:8071"
+
+  cloud:
+    gateway:
+      actuator:
+        enabled: true
+      # New namespace for WebFlux Gateway (fixes WARN)
+      server:
+        webflux:
+          httpclient: # Global timeouts for ALL routes
+            connect-timeout: 5000  # Increased from 1000ms (LOANS startup lag)
+            response-timeout: 10s  # Increased from 2s
+    discovery:
+      prefer-ip-address: true
+      client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka/  # localhost (not eureka-ms)
+        register-with-eureka: true
+        fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted
+    # enabled → access (eliminates ERROR)
+    info:
+      access: unrestricted  # Instead of enabled: true
+
+info:
+  app:
+    name: "gatewayserver"
+    description: "eazybank gateway server application"
+    version: "1.0.0"
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 2
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+    com.netflix.discovery: DEBUG  # Eureka debugging

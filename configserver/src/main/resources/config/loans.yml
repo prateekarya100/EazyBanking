@@ -1,0 +1,11 @@
+build:
+  version: "v3.0"
+
+loans:
+  message: "thank you for contacting loans microservices development team"
+  contactDetails:
+    developer: "prateek arya"
+    email: "prateekarya100@gmail.com"
+  onCallSupport:
+    - 9650841442
+    - 9123456789

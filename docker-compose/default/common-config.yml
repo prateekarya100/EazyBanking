@@ -9,9 +9,12 @@ services:
     deploy:
       resources:
         limits:
-          memory: 700m
+          memory: 900m
     environment:
-      SPRING_RABBITMQ_HOST: "rabbit"
+      SPRING_RABBITMQ_HOST: rabbit
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
 
   microservice-configserver-config:
     extends:
@@ -19,5 +22,5 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: default
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-ms:8761/eureka/
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"

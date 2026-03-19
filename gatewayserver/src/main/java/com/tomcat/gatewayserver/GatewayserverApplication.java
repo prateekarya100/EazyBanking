@@ -7,14 +7,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigBuilder;
 import org.springframework.cloud.client.circuitbreaker.Customizer;
+import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
+import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
+import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @SpringBootApplication
 public class GatewayserverApplication {
@@ -24,10 +27,12 @@ public class GatewayserverApplication {
 	}
 
 	@Bean
-	public RouteLocator eazybankRouteConfig(RouteLocatorBuilder builder){
+	public RouteLocator eazybankRouteConfig(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route(p -> p
 						.path("/eazybank/accounts/**")
+						.and()
+						.method(HttpMethod.POST, HttpMethod.GET, HttpMethod.PUT, HttpMethod.DELETE)
 						.filters(f -> f
 								.rewritePath("/eazybank/accounts/(?<segment>.*)", "/${segment}")
 								.addResponseHeader("X-ResponseTime", LocalDateTime.now().toString())
@@ -37,40 +42,44 @@ public class GatewayserverApplication {
 										.setName("accountsCircuitBreaker")
 										.setFallbackUri("forward:/contact-support")
 								)
-//										.retry(retryConfig -> retryConfig.setRetries(3)
-//												.setMethods(HttpMethod.GET)
-//												.setBackoff(Duration.ofMillis(100),Duration.ofMillis(1000),2,true))
-//								.prefixPath("/api")  // adds /api before forwarding
 						)
-						.uri("lb://ACCOUNTS")
+						.uri("lb://ACCOUNTS")   // ✅ uppercase
 				)
 				.route(p -> p
 						.path("/eazybank/cards/**")
+						.and()
+						.method(HttpMethod.POST, HttpMethod.GET, HttpMethod.PUT, HttpMethod.DELETE)
 						.filters(f -> f
 								.rewritePath("/eazybank/cards/(?<segment>.*)", "/${segment}")
 								.addResponseHeader("X-ResponseTime", LocalDateTime.now().toString())
-										.circuitBreaker(c -> c
-												.setName("cardsCircuitBreaker")
-												.setFallbackUri("forward:/contact-cards-support-team")
-										)
-//								.retry(config -> config.setRetries(3)) // retry failed requests
+								.circuitBreaker(c -> c
+										.setName("cardsCircuitBreaker")
+										.setFallbackUri("forward:/contact-cards-support-team")
+								)
 						)
-						.uri("lb://CARDS")
+						.uri("lb://CARDS")     // ✅ uppercase
 				)
 				.route(p -> p
 						.path("/eazybank/loans/**")
+						.and()
+						.method(HttpMethod.POST, HttpMethod.GET, HttpMethod.PUT, HttpMethod.DELETE)
 						.filters(f -> f
 								.rewritePath("/eazybank/loans/(?<segment>.*)", "/${segment}")
 								.circuitBreaker(c -> c
-												.setName("loansCircuitBreaker")
-												.setFallbackUri("forward:/contact-loans-support-team")
-										)
-										.retry(retryConfig -> retryConfig.setRetries(3)
+										.setName("loansCircuitBreaker")
+										.setFallbackUri("forward:/contact-loans-support-team")
+								)
+								.retry(retryConfig -> retryConfig
+										.setRetries(3)
 										.setMethods(HttpMethod.GET)
-										.setBackoff(Duration.ofMillis(100),Duration.ofMillis(1000),2,true))
-//										.setStatuses(HttpStatus.INTERNAL_SERVER_ERROR))
+										.setBackoff(Duration.ofMillis(100), Duration.ofMillis(1000), 2, true)
+								)
+								.requestRateLimiter(api_rate -> api_rate
+										.setRateLimiter(redisRateLimiter())
+										.setKeyResolver(userKeyResolver())
+								)
 						)
-						.uri("lb://LOANS")
+						.uri("lb://LOANS")     // ✅ uppercase
 				)
 				.build();
 	}
@@ -79,11 +88,22 @@ public class GatewayserverApplication {
 	public Customizer<Resilience4JCircuitBreakerFactory> defaultCustomizer() {
 		return factory -> factory.configureDefault(id -> new Resilience4JConfigBuilder(id)
 				.circuitBreakerConfig(CircuitBreakerConfig.ofDefaults())
-				.timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(4)).build())
+				.timeLimiterConfig(TimeLimiterConfig.custom()
+						.timeoutDuration(Duration.ofSeconds(10))  // ✅ increased from 4s
+						.build())
 				.build());
 	}
 
+	@Bean
+	public KeyResolver userKeyResolver() {
+		return exchange -> Mono.just(
+				Optional.ofNullable(exchange.getRequest().getHeaders().getFirst("X-User-Id"))
+						.orElse("anonymous")
+		);
+	}
 
-
-
+	@Bean
+	public RedisRateLimiter redisRateLimiter() {
+		return new RedisRateLimiter(10, 20, 1);  // ✅ increased from 1,1,1
+	}
 }

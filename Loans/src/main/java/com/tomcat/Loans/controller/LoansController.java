@@ -5,6 +5,7 @@ import com.tomcat.Loans.dto.ErrorResponseDto;
 import com.tomcat.Loans.dto.LoansDto;
 import com.tomcat.Loans.dto.ResponseDto;
 import com.tomcat.Loans.service.ILoansService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -199,11 +200,18 @@ public class LoansController {
                 .body(contactDevTeamInfo);
     }
 
-
-    @GetMapping(value = "/version")
-    public String getBuildVersion(){
-        return buildVersion;
+    @RateLimiter(name = "getBuildVersion", fallbackMethod = "getBuildVersionFallback")
+    @GetMapping(value = "/java-version")
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
     }
 
+    public ResponseEntity<String> getBuildVersionFallback(Throwable throwable) {
+        return ResponseEntity
+                .status(HttpStatus.TOO_MANY_REQUESTS)
+                .body("Too many requests. Please try after some time.");
+    }
 
 }

@@ -55,7 +55,7 @@ endpoints:
 eureka:
   instance:
     prefer-ip-address: true
-    ip-address: 127.0.0.1
+#    ip-address: 127.0.0.1
     #    instance-id: ${spring.application.name}:${server.port}prefer-ip-address: true
   client:
     fetch-registry: true

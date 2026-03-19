@@ -74,7 +74,8 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>prateekarya100/${project.artifactId}:ms</image>
+<!--						<image>prateekarya100/${project.artifactId}:ms</image>-->
+						<image>prateekarya100/${project.artifactId}:s10</image>
 					</to>
 				</configuration>
 			</plugin>

@@ -1,0 +1,24 @@
+
+
+LOAD TESTING USING APACHE BENCHMARK
+-------------------------------------
+
+1> create redis image first into docker
+	
+	docker run -p 6379:6379 --name eazyredis -d redis
+
+2> test load using apache benchmark
+
+	ab -n 10 -c 2 -v 3 http://localhost:8072/eazybank/loans/api/contact-loans-support-team
+
+	ab    : apache benchmark
+	-n 10 : no of request at once
+	-c 2  : concurrent requests, when 1 request goes another request also happend simultaneously
+	-v 3  : getting complete verbose report from apache benchmark
+	http://localhost:8072/eazybank/loans/api/contact-loans-support-team -> requesting this url load testing
+
+3>  PUSH all services to docker-hub at once
+	foreach ($service in @("accounts","cards","loans","configserver","eureka","gatewayserver")) {
+    >>     Write-Host "========== Pushing: prateekarya100/$service:s10 ==========" -ForegroundColor Cyan
+    >>     docker push prateekarya100/$service`:s10
+    >>     Write-Host "✅ Done: $service" -ForegroundColor Green

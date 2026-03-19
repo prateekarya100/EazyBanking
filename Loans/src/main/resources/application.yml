@@ -59,7 +59,7 @@ endpoints:
 eureka:
   instance:
     prefer-ip-address: true
-    ip-address: 127.0.0.1
+#    ip-address: 127.0.0.1
     #    instance-id: ${spring.application.name}:${server.port}prefer-ip-address: true
   client:
     fetch-registry: true
@@ -77,4 +77,18 @@ info:
 logging:
   level:
     com.tomcat.Loans: DEBUG
+
+
+# ADDING RESILIENCE4J RATE LIMITER USING THIS DEPENDENCY AT CONTROLLER LEVEL
+#<dependency>
+#  <groupId>org.springframework.cloud</groupId>
+#  <artifactId>spring-cloud-circuitbreaker-resilience4j</artifactId>
+#</dependency>
+resilience4j.ratelimiter:
+  instances:
+    getBuildVersion: # ← matches @RateLimiter(name="getBuildVersion")
+      limit-for-period: 5          # 5 requests
+      limit-refresh-period: 5000   # per 5 seconds
+      timeout-duration: 0          # fail immediately, no waiting
+
 

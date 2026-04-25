@@ -1,8 +1,9 @@
 import axios from "axios"
 import type { CustomerDto, CardsDto, LoansDto, AccountStatusRequest } from "./types"
 
-// VITE_GATEWAY_URL is read at runtime by the browser.
-// Set it to http://localhost:8072 so the browser calls your local Docker gateway directly.
+// 8-second timeout so the page never hangs indefinitely when backend is unreachable
+axios.defaults.timeout = 8000
+
 const _gw: string = import.meta.env.VITE_GATEWAY_URL || ""
 const GW = _gw.endsWith("/") ? _gw.slice(0, -1) : _gw
 

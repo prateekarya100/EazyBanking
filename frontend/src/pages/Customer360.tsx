@@ -10,7 +10,7 @@ export default function Customer360() {
   const [data, setData] = useState<ConsolidatedCustomerDetailsDTO | null>(null)
   const [loading, setLoading] = useState(false)
   const [notFound, setNotFound] = useState(false)
-  const { toasts, show } = useToast()
+  const { toasts, show, remove } = useToast()
 
   const search = async () => {
     if (!mobile) return
@@ -39,7 +39,7 @@ export default function Customer360() {
 
   return (
     <div className="p-8">
-      <ToastContainer toasts={toasts} onClose={() => {}} />
+      <ToastContainer toasts={toasts} onClose={remove} />
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900">Customer 360 View</h1>
         <p className="text-gray-500 text-sm mt-1">Get consolidated account, card and loan details for a customer</p>

@@ -20,7 +20,7 @@ export default function Accounts() {
   const [freezeReason, setFreezeReason] = useState("")
   const [freezeAccNum, setFreezeAccNum] = useState("")
   const [submitting, setSubmitting] = useState(false)
-  const { toasts, show } = useToast()
+  const { toasts, show, remove } = useToast()
 
   const load = useCallback(() => {
     setLoading(true)
@@ -62,7 +62,7 @@ export default function Accounts() {
 
   return (
     <div className="p-8">
-      <ToastContainer toasts={toasts} onClose={() => {}} />
+      <ToastContainer toasts={toasts} onClose={remove} />
       <PageHeader title="Accounts" subtitle="Manage bank account records" actions={<>
         <button onClick={() => { setForm(empty); setModal("create") }} className="btn-primary flex items-center gap-2"><Plus size={16} /> New Account</button>
         <button onClick={() => { setFreezeAccNum(""); setFreezeReason(""); setModal("freeze") }} className="btn-secondary flex items-center gap-2"><Lock size={16} /> Freeze/Unfreeze</button>

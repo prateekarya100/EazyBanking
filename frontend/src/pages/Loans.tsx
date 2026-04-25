@@ -17,7 +17,7 @@ export default function Loans() {
   const [form, setForm] = useState<LoansDto>(emptyLoan)
   const [createMobile, setCreateMobile] = useState("")
   const [submitting, setSubmitting] = useState(false)
-  const { toasts, show } = useToast()
+  const { toasts, show, remove } = useToast()
 
   const load = useCallback((mob?: string) => {
     if (mob) {
@@ -56,7 +56,7 @@ export default function Loans() {
 
   return (
     <div className="p-8">
-      <ToastContainer toasts={toasts} onClose={() => {}} />
+      <ToastContainer toasts={toasts} onClose={remove} />
       <PageHeader title="Loans" subtitle="Manage loan accounts" actions={<button onClick={() => { setCreateMobile(""); setModal("create") }} className="btn-primary flex items-center gap-2"><Plus size={16} /> New Loan</button>} />
       <div className="card mb-4">
         <div className="p-4 flex gap-3 border-b">

@@ -10,9 +10,18 @@ export default defineConfig(({ mode }) => {
     server: {
       host: "0.0.0.0",
       port: 5173,
+      warmup: {
+        clientFiles: [
+          "./src/main.tsx",
+          "./src/App.tsx",
+          "./src/pages/Dashboard.tsx",
+          "./src/pages/Accounts.tsx",
+          "./src/pages/Cards.tsx",
+          "./src/pages/Loans.tsx",
+          "./src/pages/Customer360.tsx",
+        ],
+      },
       proxy: {
-        // Fallback proxy: used when VITE_GATEWAY_URL is not set and
-        // the backend is reachable directly from the server process.
         "/eazybank": {
           target: gatewayUrl,
           changeOrigin: true,

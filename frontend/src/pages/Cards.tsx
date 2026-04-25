@@ -18,7 +18,7 @@ export default function Cards() {
   const [form, setForm] = useState<CardsDto>(emptyCard)
   const [issueMobile, setIssueMobile] = useState("")
   const [submitting, setSubmitting] = useState(false)
-  const { toasts, show } = useToast()
+  const { toasts, show, remove } = useToast()
 
   const load = useCallback(() => {
     setLoading(true)
@@ -63,7 +63,7 @@ export default function Cards() {
 
   return (
     <div className="p-8">
-      <ToastContainer toasts={toasts} onClose={() => {}} />
+      <ToastContainer toasts={toasts} onClose={remove} />
       <PageHeader title="Cards" subtitle="Issue and manage bank cards" actions={<button onClick={() => { setIssueMobile(""); setModal("issue") }} className="btn-primary flex items-center gap-2"><Plus size={16} /> Issue Card</button>} />
       <div className="card mb-4">
         <div className="p-4 flex gap-3">

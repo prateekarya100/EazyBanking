@@ -1,9 +1,14 @@
 import axios from "axios"
 import type { CustomerDto, CardsDto, LoansDto, AccountStatusRequest } from "./types"
 
-const ACCOUNTS = "/eazybank/accounts/api"
-const CARDS = "/eazybank/cards/api"
-const LOANS = "/eazybank/loans/api"
+// VITE_GATEWAY_URL is read at runtime by the browser.
+// Set it to http://localhost:8072 so the browser calls your local Docker gateway directly.
+const _gw: string = import.meta.env.VITE_GATEWAY_URL || ""
+const GW = _gw.endsWith("/") ? _gw.slice(0, -1) : _gw
+
+const ACCOUNTS = GW + "/eazybank/accounts/api"
+const CARDS = GW + "/eazybank/cards/api"
+const LOANS = GW + "/eazybank/loans/api"
 
 export const api = {
   createAccount: (data: CustomerDto) => axios.post(ACCOUNTS + "/createAccount", data),
